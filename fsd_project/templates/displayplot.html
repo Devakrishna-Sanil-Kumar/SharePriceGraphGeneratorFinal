@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Share Price Graph</title>
+
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet" />
+
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/css/font-awesome.min.css' %}"
+    />
+
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/modernizr.custom.js' %}"></script>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Oswald:400,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=EB+Garamond"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body data-spy="scroll" data-offset="0">
+    <button
+      class="btn btn-success pull-right"
+      style="margin-top: 1%; margin-right: 0.25%"
+      onclick="window.location.href = '/';"
+    >
+      Log out
+    </button>
+    <button
+      class="btn btn-success pull-right"
+      style="margin-top: 1%; margin-right: 0.25%"
+      onclick="window.location.href = '/';"
+    >
+      Delete Account
+    </button>
+    <div id="headerwrap">
+      <div class="container">
+        <br />
+        <div class="row">
+          <h3>Share Price Graph</h3>
+          <br />
+        </div>
+      </div>
+      <div>
+        {{ graph|safe }}
+        <br />
+      </div>
+      <br />
+      <button
+        class="btn btn-success btn-lg"
+        onclick="window.location.href = '/home';"
+      >
+        Back
+      </button>
+    </div>
+    <script src="assets/js/classie.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/smoothscroll.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

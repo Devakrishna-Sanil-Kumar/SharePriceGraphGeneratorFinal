@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Share Price Graph Generator</title>
+
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet" />
+
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}" />
+
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/modernizr.custom.js' %}"></script>
+
+    <link
+      href="http://fonts.googleapis.com/css?family=Oswald:400,300,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=EB+Garamond"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  </head>
+
+  <body data-spy="scroll" data-offset="0">
+    <form action="gotosignup" method="post">
+        {% csrf_token %}
+        <button class='btn btn-success pull-right' style="margin-top: 1%; margin-right: 0.25%;" action="gotosignup">
+          Sign up
+        </button>
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <div id="headerwrap">
+      <div class="container">
+        <br />
+        <div class="row">
+          <h1>Share Price Graph Generator</h1>
+          <br />
+          <h3>Enter the username and password to log in:</h3>
+          <br />
+		  <div class="col-lg-6 col-lg-offset-3">
+			<form action="signin" method="post">
+        {% csrf_token %}
+			  <input
+				type="text"
+				name="username"
+				class="form-control"
+				placeholder="Username"
+			  />
+			  <br />
+        <div class="password-container">
+          <input
+            type="password"
+            name="password"
+                    id="pass"
+            class="form-control"
+            placeholder="Password"
+            />
+          <i class="fa-solid fa-eye" id="eye"></i>
+        </div>
+			  <br />
+        <button type="submit" class="btn btn-success btn-lg">Log in</button>
+			</form>
+          <br />
+          <div class="col-lg-6 col-lg-offset-3"></div>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'assets/js/classie.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/smoothscroll.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script>
+        const passwordInput = document.querySelector("#pass")
+        const eye = document.querySelector("#eye")
+        eye.addEventListener("click", function(){
+          this.classList.toggle("fa-eye-slash")
+          const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+          passwordInput.setAttribute("type", type)
+        })
+    </script>
+    <style>
+      .password-container{
+        position: relative;
+      }
+      .password-container input[type="password"],
+      .password-container input[type="text"]{
+        width: 100%;
+        padding: 12px 36px 12px 12px;
+        box-sizing: border-box;
+      }
+      .fa-eye{
+        position: absolute;
+        top: 28%;
+        right: 4%;
+        cursor: pointer;
+        color: gray;
+    }
+    </style>
+  </body>
+</html>
